@@ -1,4 +1,4 @@
-import { Box, Flex, Image, Input, Text } from '@chakra-ui/react'
+import { Box, Flex, Image, Input, Link, Text } from '@chakra-ui/react'
 import { useState } from 'react'
 
 import { client } from '../utils/contentful'
@@ -39,7 +39,17 @@ export default function Home({ recipes }) {
       <Input placeholder='Search recipe...' size='lg' bg='white' onChange={onSearch} />
       <Flex mt='4' direction='column' w='full'>
         {filtered.map(({ fields }) => (
-          <Flex key={fields.slug} my='2' boxShadow='md' borderRadius='md' bg='white'>
+          <Flex
+            as={Link}
+            href={fields.postUrl}
+            isExternal
+            _hover={{ textDecoration: 'none' }}
+            key={fields.slug}
+            my='2'
+            boxShadow='md'
+            borderRadius='md'
+            bg='white'
+          >
             <Image
               maxW='100px'
               maxH='100px'

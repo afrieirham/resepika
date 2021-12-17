@@ -1,3 +1,4 @@
+import { Box, Flex, Image, Text } from '@chakra-ui/react'
 import { createClient } from 'contentful'
 
 export const getStaticProps = async () => {
@@ -6,10 +7,7 @@ export const getStaticProps = async () => {
     accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_KEY,
   })
 
-  const response = await client.getEntries({
-    content_type: 'recipe',
-    'fields.title[match]': '',
-  })
+  const response = await client.getEntries()
 
   return {
     props: {
@@ -23,20 +21,33 @@ export const getStaticProps = async () => {
 }
 
 export default function Home({ items }) {
+  console.log(items)
   return (
-    <div>
-      {items.map(({ fields }) => {
-        const thumbnailUrl = fields.thumbnail.fields.file.url
-        return (
-          <div key={fields.postUrl}>
-            <a href={fields.postUrl} target='_blank'>
-              {fields.title}
-            </a>
-            <span dangerouslySetInnerHTML={{ __html: fields.embed }}></span>
-            <img src={thumbnailUrl} />
-          </div>
-        )
-      })}
-    </div>
+    <Box px='4' pt='6'>
+      <Text fontSize='xl' fontWeight='bold' textAlign='center'>
+        Recipes
+      </Text>
+      <Flex direction='column' w='full'>
+        {items.map(({ fields }) => (
+          <Flex key={fields.slug} my='2' boxShadow='md' borderRadius='md' bg='white'>
+            <Image
+              maxW='100px'
+              maxH='100px'
+              minW='100px'
+              minH='100px'
+              src={fields.thumbnail.fields.file.url}
+              borderLeftRadius='md'
+              fit='cover'
+              boxShadow='md'
+            />
+            <Flex py='4' px='2' minH='full'>
+              <Text fontWeight='semibold' fontSize='md'>
+                {fields.title}
+              </Text>
+            </Flex>
+          </Flex>
+        ))}
+      </Flex>
+    </Box>
   )
 }

@@ -38,35 +38,38 @@ export default function Home({ recipes }) {
       </Text>
       <Input placeholder='Search recipe...' size='lg' bg='white' onChange={onSearch} />
       <Flex mt='4' direction='column' w='full'>
-        {filtered.map(({ fields }) => (
-          <Flex
-            as={Link}
-            href={fields.postUrl}
-            isExternal
-            _hover={{ textDecoration: 'none' }}
-            key={fields.slug}
-            my='2'
-            boxShadow='md'
-            borderRadius='md'
-            bg='white'
-          >
-            <Image
-              maxW='100px'
-              maxH='100px'
-              minW='100px'
-              minH='100px'
-              src={fields.thumbnail.fields.file.url}
-              borderLeftRadius='md'
-              fit='cover'
+        {filtered.map(({ fields }) => {
+          const hasImage = Boolean(fields.thumbnail?.fields.file.url)
+          return (
+            <Flex
+              as={Link}
+              href={fields.postUrl}
+              isExternal
+              _hover={{ textDecoration: 'none' }}
+              key={fields.slug}
+              my='2'
               boxShadow='md'
-            />
-            <Flex py='4' px='2' minH='full'>
-              <Text fontWeight='semibold' fontSize='md'>
-                {fields.title}
-              </Text>
+              borderRadius='md'
+              bg='white'
+            >
+              <Image
+                maxW='100px'
+                maxH='100px'
+                minW='100px'
+                minH='100px'
+                src={hasImage ? fields.thumbnail.fields.file.url : '/recipe-placeholder.png'}
+                borderLeftRadius='md'
+                fit='cover'
+                boxShadow='md'
+              />
+              <Flex p='4' minH='full'>
+                <Text fontWeight='semibold' fontSize='md'>
+                  {fields.title}
+                </Text>
+              </Flex>
             </Flex>
-          </Flex>
-        ))}
+          )
+        })}
       </Flex>
     </Box>
   )

@@ -13,6 +13,7 @@ class MyDocument extends Document {
             rel='stylesheet'
           />
           <link rel='icon' href='/favicon.ico' />
+          <title>Koleksi Resepi Khairulaming</title>
         </Head>
         <Box as='body' bgColor='#EDF2F7'>
           <Main />

@@ -6,9 +6,16 @@ import { client } from '../utils/contentful'
 export const getStaticProps = async () => {
   const response = await client.getEntries({ limit: 1000 })
 
+  // Sort recipes based on createdAt
+  const recipes = response.items.sort((a, b) => {
+    const i = new Date(a.sys.createdAt)
+    const j = new Date(b.sys.createdAt)
+    return j - i
+  })
+
   return {
     props: {
-      recipes: response.items,
+      recipes,
     },
     // Next.js will attempt to re-generate the page:
     // - When a request comes in

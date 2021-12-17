@@ -7,11 +7,11 @@ export const getStaticProps = async () => {
     accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_KEY,
   })
 
-  const response = await client.getEntries()
+  const response = await client.getEntries({ limit: 1000 })
 
   return {
     props: {
-      items: response.items,
+      recipes: response.items,
     },
     // Next.js will attempt to re-generate the page:
     // - When a request comes in
@@ -20,15 +20,14 @@ export const getStaticProps = async () => {
   }
 }
 
-export default function Home({ items }) {
-  console.log(items)
+export default function Home({ recipes }) {
   return (
-    <Box px='4' pt='6'>
+    <Box px='4' pt='6' maxW='sm' mx='auto'>
       <Text fontSize='xl' fontWeight='bold' textAlign='center'>
         Recipes
       </Text>
       <Flex direction='column' w='full'>
-        {items.map(({ fields }) => (
+        {recipes.map(({ fields }) => (
           <Flex key={fields.slug} my='2' boxShadow='md' borderRadius='md' bg='white'>
             <Image
               maxW='100px'

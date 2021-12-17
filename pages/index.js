@@ -1,12 +1,7 @@
 import { Box, Flex, Image, Text } from '@chakra-ui/react'
-import { createClient } from 'contentful'
+import { client } from '../utils/contentful'
 
 export const getStaticProps = async () => {
-  const client = createClient({
-    space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID,
-    accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_KEY,
-  })
-
   const response = await client.getEntries({ limit: 1000 })
 
   return {

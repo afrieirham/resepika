@@ -34,9 +34,14 @@ export default function Home({ recipes }) {
   return (
     <Box px='4' pt='6' maxW='sm' mx='auto'>
       <Text fontSize='xl' fontWeight='bold' textAlign='center' mb='6'>
-        Recipes
+        Koleksi Resepi Khairulaming
       </Text>
-      <Input placeholder='Search recipe...' size='lg' bg='white' onChange={onSearch} />
+      <Input placeholder='Cari resepi...' size='lg' bg='white' onChange={onSearch} />
+      <Text color='gray.500' fontSize='xs' textAlign='center' mt='2'>
+        <Link href='https://linktree.com/afrieirham' isExternal>
+          Made with ❤️ by Afrie
+        </Link>
+      </Text>
       <Flex mt='4' direction='column' w='full'>
         {filtered.map(({ fields }) => {
           const hasImage = Boolean(fields.thumbnail?.fields.file.url)
@@ -53,17 +58,17 @@ export default function Home({ recipes }) {
               bg='white'
             >
               <Image
-                maxW='100px'
-                maxH='100px'
-                minW='100px'
-                minH='100px'
+                maxW='120px'
+                maxH='120px'
+                minW='120px'
+                minH='120px'
                 src={hasImage ? fields.thumbnail.fields.file.url : '/recipe-placeholder.png'}
                 borderLeftRadius='md'
                 fit='cover'
                 boxShadow='md'
               />
-              <Flex p='4' minH='full'>
-                <Text fontWeight='semibold' fontSize='md'>
+              <Flex py='2' px='4' minH='full'>
+                <Text fontWeight='semibold' fontSize='md' noOfLines={4}>
                   {fields.title}
                 </Text>
               </Flex>

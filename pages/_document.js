@@ -14,7 +14,7 @@ class MyDocument extends Document {
           />
           <link rel='icon' href='/favicon.ico' />
         </Head>
-        <Box as='body' bgColor='#F7FAFC'>
+        <Box as='body' bgColor='#EDF2F7'>
           <Main />
           <NextScript />
         </Box>

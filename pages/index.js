@@ -1,4 +1,6 @@
-import { Box, Flex, Image, Text } from '@chakra-ui/react'
+import { Box, Flex, Image, Input, Text } from '@chakra-ui/react'
+import { useState } from 'react'
+
 import { client } from '../utils/contentful'
 
 export const getStaticProps = async () => {
@@ -16,13 +18,27 @@ export const getStaticProps = async () => {
 }
 
 export default function Home({ recipes }) {
+  const [filtered, setFiltered] = useState(recipes)
+
+  const onSearch = (e) => {
+    const searchTerm = e.target.value.toLowerCase()
+
+    const filtered = recipes.filter((item) => {
+      const currentRecipe = item.fields.title.toLowerCase()
+      return currentRecipe.includes(searchTerm)
+    })
+
+    setFiltered(filtered)
+  }
+
   return (
     <Box px='4' pt='6' maxW='sm' mx='auto'>
-      <Text fontSize='xl' fontWeight='bold' textAlign='center'>
+      <Text fontSize='xl' fontWeight='bold' textAlign='center' mb='6'>
         Recipes
       </Text>
-      <Flex direction='column' w='full'>
-        {recipes.map(({ fields }) => (
+      <Input placeholder='Search recipe...' size='lg' bg='white' onChange={onSearch} />
+      <Flex mt='4' direction='column' w='full'>
+        {filtered.map(({ fields }) => (
           <Flex key={fields.slug} my='2' boxShadow='md' borderRadius='md' bg='white'>
             <Image
               maxW='100px'

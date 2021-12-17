@@ -1,4 +1,4 @@
-import { Box, Flex, Image, Input, Link, Text } from '@chakra-ui/react'
+import { Box, Flex, Grid, Image, Input, Link, Text } from '@chakra-ui/react'
 import { useState } from 'react'
 
 import { client } from '../utils/contentful'
@@ -12,8 +12,8 @@ export const getStaticProps = async () => {
     },
     // Next.js will attempt to re-generate the page:
     // - When a request comes in
-    // - At most once every 10 seconds
-    revalidate: 60, // In seconds
+    // - Every hour
+    revalidate: 60 * 60,
   }
 }
 
@@ -32,17 +32,33 @@ export default function Home({ recipes }) {
   }
 
   return (
-    <Box px='4' pt='6' maxW='sm' mx='auto'>
-      <Text fontSize='xl' fontWeight='bold' textAlign='center' mb='6'>
-        Koleksi Resepi Khairulaming
-      </Text>
-      <Input placeholder='Cari resepi...' size='lg' bg='white' onChange={onSearch} />
-      <Text color='gray.500' fontSize='xs' textAlign='center' mt='2'>
-        <Link href='https://linktree.com/afrieirham' isExternal>
-          Made with ❤️ by Afrie
-        </Link>
-      </Text>
-      <Flex mt='4' direction='column' w='full'>
+    <Box
+      pt='6'
+      px={{ base: '4', md: '6', lg: '8' }}
+      maxW={{ base: 'sm', md: 'full' }}
+      mx={{ base: 'auto', lg: 0 }}
+    >
+      <Box mx='auto' w='full' maxW='sm'>
+        <Text fontSize='xl' fontWeight='bold' textAlign='center' mb='6'>
+          Koleksi Resepi Khairulaming
+        </Text>
+        <Input placeholder='Cari resepi...' size='lg' bg='white' onChange={onSearch} />
+        <Text color='gray.500' fontSize='xs' textAlign='center' mt='2'>
+          <Link href='https://linktree.com/afrieirham' isExternal>
+            Made with ❤️ by Afrie
+          </Link>
+        </Text>
+      </Box>
+      <Grid
+        my='12'
+        w='full'
+        templateColumns={{
+          base: 'repeat(1, 1fr)',
+          md: 'repeat(3, 1fr)',
+          xl: 'repeat(4, 1fr)',
+        }}
+        gap='6'
+      >
         {filtered.map(({ fields }) => {
           const hasImage = Boolean(fields.thumbnail?.fields.file.url)
           return (
@@ -52,7 +68,6 @@ export default function Home({ recipes }) {
               isExternal
               _hover={{ textDecoration: 'none' }}
               key={fields.slug}
-              my='2'
               boxShadow='md'
               borderRadius='md'
               bg='white'
@@ -75,7 +90,7 @@ export default function Home({ recipes }) {
             </Flex>
           )
         })}
-      </Flex>
+      </Grid>
     </Box>
   )
 }

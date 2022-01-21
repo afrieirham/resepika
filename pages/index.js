@@ -51,7 +51,7 @@ export default function Home({ recipes }) {
         </Text>
         <Input placeholder='Cari resepi...' size='lg' bg='white' onChange={onSearch} />
         <Text color='gray.500' fontSize='xs' textAlign='center' mt='2'>
-          <Link href='https://linktree.com/afrieirham' isExternal>
+          <Link href='https://afrieirham.com' isExternal>
             Made with ❤️ by Afrie
           </Link>
         </Text>

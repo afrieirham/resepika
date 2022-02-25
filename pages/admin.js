@@ -1,14 +1,19 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-import { Button, Flex, Input, Link, Text, Textarea } from '@chakra-ui/react'
+import { Button, Flex, Input, Text, Textarea, useToast } from '@chakra-ui/react'
+import { promiseFormatter } from '../utils/promiseFormatter'
 
 function Admin() {
+  const toast = useToast()
+
   const [loggedIn, setLoggedIn] = useState(false)
   const [password, setPassword] = useState('')
 
   const [caption, setCaption] = useState('')
   const [photoUrl, setPhotoUrl] = useState('')
   const [postUrl, setPostUrl] = useState('')
+
+  const [loading, setLoading] = useState(false)
 
   const onLogin = async (e) => {
     e.preventDefault()
@@ -51,8 +56,35 @@ function Admin() {
     )
   }
 
-  const addToContentful = () => {
-    alert('TODO: submit to contentful')
+  const addToContentful = async () => {
+    setLoading(true)
+    const newRecipe = { title: caption, photoUrl, postUrl }
+
+    const [data, error] = await promiseFormatter(axios.post('/api/upload', newRecipe))
+
+    if (data) {
+      toast({
+        variant: 'subtle',
+        title: data.data.message,
+        status: 'success',
+        duration: 3000,
+        isClosable: true,
+        position: 'top',
+      })
+    }
+
+    if (error) {
+      toast({
+        variant: 'subtle',
+        title: error.response.data.message,
+        status: 'error',
+        duration: 3000,
+        isClosable: true,
+        position: 'top',
+      })
+    }
+
+    setLoading(false)
   }
 
   return (
@@ -72,7 +104,13 @@ function Admin() {
       <Text mt='8'>Caption</Text>
       <Textarea resize='vertical' value={caption} onChange={(e) => setCaption(e.target.value)} />
 
-      <Button mt='8' w='full' onClick={addToContentful}>
+      <Button
+        mt='8'
+        w='full'
+        onClick={addToContentful}
+        isLoading={loading}
+        loadingText='Uploading...'
+      >
         Submit
       </Button>
     </Flex>

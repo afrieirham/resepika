@@ -1,6 +1,15 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-import { Button, Flex, Input, Text, Textarea, useToast } from '@chakra-ui/react'
+import {
+  Button,
+  Flex,
+  Input,
+  InputGroup,
+  InputRightElement,
+  Text,
+  Textarea,
+  useToast,
+} from '@chakra-ui/react'
 import { promiseFormatter } from '../utils/promiseFormatter'
 
 function Admin() {
@@ -14,6 +23,9 @@ function Admin() {
   const [postUrl, setPostUrl] = useState('')
 
   const [loading, setLoading] = useState(false)
+  const [show, setShow] = useState(false)
+
+  const handleClick = () => setShow(!show)
 
   const onLogin = async (e) => {
     e.preventDefault()
@@ -42,13 +54,20 @@ function Admin() {
         as='form'
         onSubmit={onLogin}
       >
-        <Input
-          type='password'
-          placeholder='Password'
-          name='password'
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+        <InputGroup>
+          <Input
+            type={show ? 'text' : 'password'}
+            placeholder='Password'
+            name='password'
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <InputRightElement width='4.5rem'>
+            <Button h='1.75rem' size='sm' onClick={handleClick}>
+              {show ? 'Hide' : 'Show'}
+            </Button>
+          </InputRightElement>
+        </InputGroup>
         <Button mt='4' w='full' type='submit'>
           Login
         </Button>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import {
   Button,
@@ -15,64 +15,27 @@ import { promiseFormatter } from '../utils/promiseFormatter'
 function Admin() {
   const toast = useToast()
 
-  const [loggedIn, setLoggedIn] = useState(false)
-  const [password, setPassword] = useState('')
-
   const [caption, setCaption] = useState('')
   const [photoUrl, setPhotoUrl] = useState('')
   const [postUrl, setPostUrl] = useState('')
 
   const [loading, setLoading] = useState(false)
-  const [show, setShow] = useState(false)
+  const [fetching, setFetching] = useState(false)
 
-  const handleClick = () => setShow(!show)
+  const [position, setPosition] = useState(1)
 
-  const onLogin = async (e) => {
-    e.preventDefault()
-    const { data } = await axios.post('/api/verify', { password })
-    setLoggedIn(data.status)
+  useEffect(() => {
+    onFetch()
+  }, [])
 
-    if (data.status) {
-      const { data } = await axios.get('/api/fetch')
-      setCaption(data.caption)
-      setPhotoUrl(data.photoUrl)
-      setPostUrl(data.postUrl)
-    }
-  }
+  const onFetch = async () => {
+    setFetching(true)
 
-  if (!loggedIn) {
-    return (
-      <Flex
-        direction='column'
-        minH='100vh'
-        w='100vw'
-        maxW='md'
-        mx='auto'
-        justifyContent='center'
-        alignItems='center'
-        p='8'
-        as='form'
-        onSubmit={onLogin}
-      >
-        <InputGroup>
-          <Input
-            type={show ? 'text' : 'password'}
-            placeholder='Password'
-            name='password'
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <InputRightElement width='4.5rem'>
-            <Button h='1.75rem' size='sm' onClick={handleClick}>
-              {show ? 'Hide' : 'Show'}
-            </Button>
-          </InputRightElement>
-        </InputGroup>
-        <Button mt='4' w='full' type='submit'>
-          Login
-        </Button>
-      </Flex>
-    )
+    const { data } = await axios.get(`/api/fetch/${position}`)
+    setCaption(data.caption)
+    setPhotoUrl(data.photoUrl)
+    setPostUrl(data.postUrl)
+    setFetching(false)
   }
 
   const addToContentful = async () => {
@@ -132,8 +95,24 @@ function Admin() {
       >
         Submit
       </Button>
+
+      <Text mt='8'>Post to fetch</Text>
+      <InputGroup mt='2'>
+        <Input
+          type='number'
+          value={position}
+          onChange={(e) => setPosition(e.target.value)}
+          placeholder='Post position to fetch'
+        />
+        <InputRightElement width='4.5rem'>
+          <Button h='1.75rem' size='sm' onClick={onFetch} isLoading={fetching}>
+            Fetch
+          </Button>
+        </InputRightElement>
+      </InputGroup>
     </Flex>
   )
 }
 
 export default Admin
+

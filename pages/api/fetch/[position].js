@@ -1,13 +1,15 @@
 const axios = require('axios')
 const url = process.env.NEXT_PUBLIC_PROFILE_URL
 
-export default async (_, res) => {
+export default async (req, res) => {
   try {
     // Fetch data using url
     const { data } = await axios.get(url)
 
+    const position = req.query.position
+
     // Go to relevant node
-    const content = data.data.user.edge_owner_to_timeline_media.edges[0].node
+    const content = data.data.user.edge_owner_to_timeline_media.edges[position - 1].node
 
     // Get only needed data
     const photoUrl = content.display_url
@@ -19,3 +21,4 @@ export default async (_, res) => {
     return res.json({ error })
   }
 }
+

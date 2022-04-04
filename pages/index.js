@@ -44,6 +44,7 @@ export default function Home({ recipes }) {
       px={{ base: '4', md: '6', lg: '8' }}
       maxW={{ base: 'sm', md: 'full' }}
       mx={{ base: 'auto', lg: 0 }}
+      bgColor='#EDF2F7'
     >
       <Box mx='auto' w='full' maxW='sm'>
         <Text fontSize='xl' fontWeight='bold' textAlign='center' mb='6'>
@@ -74,7 +75,7 @@ export default function Home({ recipes }) {
               href={fields.postUrl}
               isExternal
               _hover={{ textDecoration: 'none' }}
-              key={fields.slug}
+              key={fields.postUrl}
               boxShadow='md'
               borderRadius='md'
               bg='white'
@@ -101,3 +102,4 @@ export default function Home({ recipes }) {
     </Box>
   )
 }
+

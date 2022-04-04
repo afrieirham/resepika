@@ -3,13 +3,16 @@ const url = process.env.NEXT_PUBLIC_PROFILE_URL
 
 export default async (req, res) => {
   try {
+    const position = req.query.position
+
     // Fetch data using url
     const { data } = await axios.get(url)
 
-    const position = req.query.position
+    // Use request body if available
+    const source = Boolean(req.body) ? req.body : data
 
     // Go to relevant node
-    const content = data.data.user.edge_owner_to_timeline_media.edges[position - 1].node
+    const content = source.data.user.edge_owner_to_timeline_media.edges[position - 1].node
 
     // Get only needed data
     const photoUrl = content.display_url
@@ -18,7 +21,7 @@ export default async (req, res) => {
 
     return res.json({ photoUrl, postUrl, caption })
   } catch (error) {
-    return res.json({ error })
+    return res.json({ error: 'Something went wrong' })
   }
 }
 

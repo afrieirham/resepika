@@ -18,6 +18,7 @@ function Admin() {
   const [caption, setCaption] = useState('')
   const [photoUrl, setPhotoUrl] = useState('')
   const [postUrl, setPostUrl] = useState('')
+  const [source, setSource] = useState('')
 
   const [loading, setLoading] = useState(false)
   const [fetching, setFetching] = useState(false)
@@ -31,10 +32,16 @@ function Admin() {
   const onFetch = async () => {
     setFetching(true)
 
-    const { data } = await axios.get(`/api/fetch/${position}`)
-    setCaption(data.caption)
-    setPhotoUrl(data.photoUrl)
-    setPostUrl(data.postUrl)
+    const reqBody = source ? { ...JSON.parse(source) } : {}
+
+    const { data } = await axios.post(`/api/fetch/${position}`, reqBody)
+
+    if (!data.error) {
+      setCaption(data.caption)
+      setPhotoUrl(data.photoUrl)
+      setPostUrl(data.postUrl)
+    }
+
     setFetching(false)
   }
 
@@ -87,7 +94,7 @@ function Admin() {
       <Textarea resize='vertical' value={caption} onChange={(e) => setCaption(e.target.value)} />
 
       <Button
-        mt='8'
+        mt='2'
         w='full'
         onClick={addToContentful}
         isLoading={loading}
@@ -97,19 +104,17 @@ function Admin() {
       </Button>
 
       <Text mt='8'>Post to fetch</Text>
-      <InputGroup mt='2'>
-        <Input
-          type='number'
-          value={position}
-          onChange={(e) => setPosition(e.target.value)}
-          placeholder='Post position to fetch'
-        />
-        <InputRightElement width='4.5rem'>
-          <Button h='1.75rem' size='sm' onClick={onFetch} isLoading={fetching}>
-            Fetch
-          </Button>
-        </InputRightElement>
-      </InputGroup>
+      <Input
+        type='number'
+        value={position}
+        onChange={(e) => setPosition(e.target.value)}
+        placeholder='Post position to fetch'
+      />
+      <Text mt='4'>Source</Text>
+      <Textarea resize='vertical' value={source} onChange={(e) => setSource(e.target.value)} />
+      <Button mt='2' w='full' onClick={onFetch} isLoading={fetching}>
+        Fetch
+      </Button>
     </Flex>
   )
 }

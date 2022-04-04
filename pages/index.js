@@ -75,7 +75,7 @@ export default function Home({ recipes }) {
               href={fields.postUrl}
               isExternal
               _hover={{ textDecoration: 'none' }}
-              key={fields.slug}
+              key={fields.postUrl}
               boxShadow='md'
               borderRadius='md'
               bg='white'
@@ -102,3 +102,4 @@ export default function Home({ recipes }) {
     </Box>
   )
 }
+

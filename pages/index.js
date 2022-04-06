@@ -1,5 +1,6 @@
-import { Box, Flex, Grid, Hide, Image, Input, Link, Show, Text } from '@chakra-ui/react'
+import { Box, Flex, Grid, Input, Link, Text } from '@chakra-ui/react'
 import { useState } from 'react'
+import Recipe from '../components/Recipe'
 
 import { client } from '../utils/contentful'
 
@@ -38,41 +39,7 @@ export default function Home({ recipes }) {
     setFiltered(filtered)
   }
 
-  const renderItems = () =>
-    filtered.map(({ fields }) => {
-      const hasImage = Boolean(fields.thumbnail?.fields.file.url)
-      return (
-        <Flex
-          as={Link}
-          href={fields.postUrl}
-          isExternal
-          _hover={{ textDecoration: 'none' }}
-          key={fields.postUrl}
-          boxShadow='md'
-          borderRadius='md'
-          bg='white'
-          w={{ base: 'sm', md: 'full' }}
-          mx='auto'
-          my={{ base: '2', md: '0' }}
-        >
-          <Image
-            maxW='120px'
-            maxH='120px'
-            minW='120px'
-            minH='120px'
-            src={hasImage ? fields.thumbnail.fields.file.url : '/recipe-placeholder.png'}
-            borderLeftRadius='md'
-            fit='cover'
-            boxShadow='md'
-          />
-          <Flex py='2' px='4' minH='full'>
-            <Text fontWeight='semibold' fontSize='md' noOfLines={4}>
-              {fields.title}
-            </Text>
-          </Flex>
-        </Flex>
-      )
-    })
+  const renderItems = () => filtered.map(({ fields }) => <Recipe fields={fields} />)
 
   const displayProps = {
     h: '80vh',

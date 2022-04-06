@@ -9,7 +9,6 @@ function Recipe({ fields }) {
       href={fields.postUrl}
       isExternal
       _hover={{ textDecoration: 'none' }}
-      key={fields.postUrl}
       boxShadow='md'
       borderRadius='md'
       bg='white'

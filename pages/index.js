@@ -39,7 +39,8 @@ export default function Home({ recipes }) {
     setFiltered(filtered)
   }
 
-  const renderItems = () => filtered.map(({ fields }) => <Recipe fields={fields} />)
+  const renderItems = () =>
+    filtered.map(({ fields }) => <Recipe key={fields.postUrl} fields={fields} />)
 
   const displayProps = {
     h: '80vh',

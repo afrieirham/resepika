@@ -39,26 +39,15 @@ export default function Home({ recipes }) {
   }
 
   return (
-    <Box
-      pt='6'
-      px={{ base: '4', md: '6', lg: '8' }}
-      maxW={{ base: 'sm', md: 'full' }}
-      mx={{ base: 'auto', lg: 0 }}
-      bgColor='#EDF2F7'
-    >
+    <Box pt='6' px={{ base: '4', md: '6', lg: '8' }} bgColor='#EDF2F7'>
       <Box mx='auto' w='full' maxW='sm'>
-        <Text fontSize='xl' fontWeight='bold' textAlign='center' mb='6'>
+        <Text fontSize='xl' fontWeight='bold' textAlign='center' mb='2'>
           Koleksi Resepi Khairulaming
         </Text>
         <Input placeholder='Cari resepi...' size='lg' bg='white' onChange={onSearch} />
-        <Text color='gray.500' fontSize='xs' textAlign='center' mt='2'>
-          <Link href='https://afrieirham.com' isExternal>
-            Made with ❤️ by Afrie
-          </Link>
-        </Text>
       </Box>
       <Grid
-        my='12'
+        mt='6'
         w='full'
         templateColumns={{
           base: 'repeat(1, 1fr)',
@@ -66,6 +55,8 @@ export default function Home({ recipes }) {
           xl: 'repeat(4, 1fr)',
         }}
         gap='6'
+        maxW={{ base: 'sm', md: 'full' }}
+        mx={{ base: 'auto', lg: 0 }}
       >
         {filtered.map(({ fields }) => {
           const hasImage = Boolean(fields.thumbnail?.fields.file.url)
@@ -99,6 +90,13 @@ export default function Home({ recipes }) {
           )
         })}
       </Grid>
+      <Flex py='4' justifyContent='center' alignItems='center'>
+        <Text color='gray.500' fontSize='xs' textAlign='center'>
+          <Link href='https://afrieirham.com' isExternal>
+            Made with ❤️ by Afrie
+          </Link>
+        </Text>
+      </Flex>
     </Box>
   )
 }

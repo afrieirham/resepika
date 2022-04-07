@@ -47,7 +47,7 @@ export default function Home({ recipes }) {
     w: 'full',
     mx: { base: 'auto', lg: 0 },
     overflow: 'scroll',
-    px: { base: '0', md: '6', lg: '8' },
+    px: { base: '4', md: '6', lg: '8' },
     py: '2',
   }
 
@@ -61,6 +61,7 @@ export default function Home({ recipes }) {
         maxW='sm'
         justifyContent='center'
         alignItems='center'
+        px={{ base: '4', md: 'none' }}
       >
         <Text fontSize='xl' fontWeight='bold' textAlign='center' mb='2'>
           Koleksi Resepi Khairulaming

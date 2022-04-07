@@ -12,7 +12,7 @@ function Recipe({ fields }) {
       boxShadow='md'
       borderRadius='md'
       bg='white'
-      w={{ base: 'sm', md: 'full' }}
+      w='full'
       mx='auto'
       my={{ base: '2', md: '0' }}
     >

@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/react';
 import { ChakraProvider } from '@chakra-ui/react'
 import Head from 'next/head'
 import React from 'react'
@@ -13,6 +14,7 @@ function MyApp({ Component, pageProps }) {
       <ChakraProvider theme={customTheme}>
         <Component {...pageProps} />
       </ChakraProvider>
+      <Analytics />
     </React.Fragment>
   )
 }

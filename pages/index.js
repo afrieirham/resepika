@@ -45,7 +45,7 @@ export default function Home({ recipes }) {
     ));
 
   return (
-    <Box bgColor="#EDF2F7">
+    <Box>
       <Flex
         direction="column"
         h="15vh"
@@ -70,8 +70,8 @@ export default function Home({ recipes }) {
       <SimpleGrid
         mx="auto"
         spacing={{ base: 1, sm: 2 }}
-        columns={3}
-        maxWidth="2xl"
+        columns={{ base: 1, sm: 2, md: 3 }}
+        maxWidth="3xl"
       >
         {renderItems()}
       </SimpleGrid>

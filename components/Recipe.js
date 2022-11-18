@@ -7,7 +7,7 @@ function Recipe({ fields }) {
 
   return (
     <Link href={fields.postUrl} isExternal position="relative">
-      <AspectRatio ratio={1} maxWidth={"250px"}>
+      <AspectRatio ratio={1} maxH="250px">
         <Img
           w="full"
           objectFit="cover"
@@ -19,7 +19,7 @@ function Recipe({ fields }) {
         alignItems="flex-end"
         w="full"
         h="full"
-        bgGradient="linear(transparent 50%, black 100%)"
+        bgGradient="linear(transparent 40%, black 100%)"
         position="absolute"
         zIndex="overlay"
         bottom="0"

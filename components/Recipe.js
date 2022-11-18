@@ -1,39 +1,35 @@
-import React from 'react'
-import { Flex, Image, Link, Text } from '@chakra-ui/react'
+import React from "react";
+import { AspectRatio, Flex, Img, Link, Text } from "@chakra-ui/react";
 
 function Recipe({ fields }) {
-  const hasImage = Boolean(fields.thumbnail?.fields.file.url)
+  const hasImage = Boolean(fields.thumbnail?.fields.file.url);
+  const imageUrl = fields.thumbnail?.fields.file.url;
+
   return (
-    <Flex
-      as={Link}
-      href={fields.postUrl}
-      isExternal
-      _hover={{ textDecoration: 'none' }}
-      boxShadow='md'
-      borderRadius='md'
-      bg='white'
-      w='full'
-      mx='auto'
-      my={{ base: '2', md: '0' }}
-    >
-      <Image
-        maxW='120px'
-        maxH='120px'
-        minW='120px'
-        minH='120px'
-        src={hasImage ? fields.thumbnail.fields.file.url : '/recipe-placeholder.png'}
-        borderLeftRadius='md'
-        fit='cover'
-        boxShadow='md'
-      />
-      <Flex py='2' px='4' minH='full'>
-        <Text fontWeight='semibold' fontSize='md' noOfLines={4}>
-          {fields.title}
-        </Text>
+    <Link href={fields.postUrl} isExternal position="relative">
+      <AspectRatio ratio={1} maxWidth={"250px"}>
+        <Img
+          w="full"
+          objectFit="cover"
+          src={hasImage ? imageUrl : "/recipe-placeholder.png"}
+          alt={fields.title}
+        />
+      </AspectRatio>
+      <Flex
+        alignItems="flex-end"
+        w="full"
+        h="full"
+        bgGradient="linear(transparent 50%, black 100%)"
+        position="absolute"
+        zIndex="overlay"
+        bottom="0"
+        padding="2"
+        color="white"
+      >
+        <Text fontSize="sm">{fields.title}</Text>
       </Flex>
-    </Flex>
-  )
+    </Link>
+  );
 }
 
-export default Recipe
-
+export default Recipe;

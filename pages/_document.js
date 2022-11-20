@@ -19,7 +19,7 @@ class MyDocument extends Document {
           <link rel="icon" href="/favicon.ico" />
           <script
             async
-            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7579542537059800"
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5654598090665312"
             crossOrigin="anonymous"
           ></script>
         </Head>

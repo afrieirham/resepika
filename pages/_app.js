@@ -28,6 +28,10 @@ function MyApp({ Component, pageProps }) {
         <meta name="twitter:title" content={meta.title} />
         <meta name="twitter:description" content={meta.description} />
         <meta name="twitter:image" content={meta.image} />
+        <meta
+          name="google-site-verification"
+          content="YexpalzwPHCjqpTSfxLWrBTKGCI4wyFmhjhTHWFFHN4"
+        />
       </Head>
       <ChakraProvider theme={customTheme}>
         <Component {...pageProps} />

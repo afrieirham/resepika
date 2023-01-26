@@ -5,10 +5,11 @@ import { client } from "../utils/contentful";
 import Recipe from "../components/Recipe";
 
 export const getStaticProps = async (context) => {
+  const cleanTerm = context?.params?.term?.replace(/-/g, " ");
   const response = await client.getEntries({
     content_type: "recipe",
     limit: 1000,
-    "fields.title[match]": context?.params?.term?.replaceAll("-", " "),
+    "fields.title[match]": cleanTerm,
   });
 
   // Sort recipes based on createdAt
@@ -21,7 +22,7 @@ export const getStaticProps = async (context) => {
   return {
     props: {
       recipes,
-      term: context?.params?.term?.replaceAll("-", " "),
+      term: cleanTerm,
     },
     // - Every 1 hour
     revalidate: 60 * 60 * 1,
@@ -94,7 +95,7 @@ export async function getStaticPaths() {
   ];
   return {
     paths,
-    fallback: false,
+    fallback: true,
   };
 }
 

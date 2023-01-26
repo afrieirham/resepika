@@ -1,6 +1,6 @@
-const adminPassword = process.env.ADMIN_PASSWORD
+const adminPassword = process.env.ADMIN_PASSWORD;
 
-export default async (req, res) => {
-  const { password } = req.body
-  return res.json({ status: password === adminPassword })
+export default async function handler(req, res) {
+  const { password } = req.body;
+  return res.json({ status: password === adminPassword });
 }

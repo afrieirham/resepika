@@ -28,6 +28,7 @@ function MyApp({ Component, pageProps }) {
         <meta name="twitter:title" content={meta.title} />
         <meta name="twitter:description" content={meta.description} />
         <meta name="twitter:image" content={meta.image} />
+        <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="google-site-verification"
           content="YexpalzwPHCjqpTSfxLWrBTKGCI4wyFmhjhTHWFFHN4"

@@ -5,8 +5,7 @@ import { client } from "../utils/contentful";
 import Recipe from "../components/Recipe";
 
 export const getStaticProps = async (context) => {
-  const { term } = context.params;
-  const cleanTerm = String(term).replaceAll("-", " ");
+  const cleanTerm = String(context?.params?.term).replaceAll("-", " ");
   const response = await client.getEntries({
     content_type: "recipe",
     limit: 1000,

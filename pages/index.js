@@ -1,5 +1,5 @@
 import { Box, Flex, Input, Link, SimpleGrid, Text } from "@chakra-ui/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Recipe from "../components/Recipe";
 
 import { client } from "../utils/contentful";
@@ -27,17 +27,16 @@ export const getStaticProps = async () => {
 
 export default function Home({ recipes }) {
   const [filtered, setFiltered] = useState(recipes);
+  const [searchTerm, setSearchTerm] = useState("");
 
-  const onSearch = (e) => {
-    const searchTerm = e.target.value.toLowerCase();
-
+  useEffect(() => {
     const filtered = recipes.filter((item) => {
       const currentRecipe = item.fields.title.toLowerCase();
       return currentRecipe.includes(searchTerm);
     });
 
     setFiltered(filtered);
-  };
+  }, [searchTerm, recipes]);
 
   const renderItems = () =>
     filtered.map(({ fields }) => (
@@ -60,10 +59,11 @@ export default function Home({ recipes }) {
           Koleksi Resepi Khairulaming
         </Text>
         <Input
+          value={searchTerm}
           placeholder="Cari resepi..."
           size="lg"
           bg="white"
-          onChange={onSearch}
+          onChange={(e) => setSearchTerm(e.target.value.toLocaleLowerCase())}
         />
       </Flex>
 

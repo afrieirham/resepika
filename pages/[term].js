@@ -6,7 +6,7 @@ import Recipe from "../components/Recipe";
 
 export const getStaticProps = async (context) => {
   const { term } = context.params;
-  const cleanTerm = term.replaceAll("-", " ");
+  const cleanTerm = term?.replaceAll("-", " ");
   const response = await client.getEntries({
     content_type: "recipe",
     limit: 1000,
@@ -25,10 +25,8 @@ export const getStaticProps = async (context) => {
       recipes,
       term: cleanTerm,
     },
-    // Next.js will attempt to re-generate the page:
-    // - When a request comes in
-    // - Every 10 minutes
-    revalidate: 60 * 10,
+    // - Every 1 hour
+    revalidate: 60 * 60 * 1,
   };
 };
 

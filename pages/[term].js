@@ -2,6 +2,7 @@ import Head from "next/head";
 import { Box, Button, Flex, Link, SimpleGrid, Text } from "@chakra-ui/react";
 
 import { client } from "../utils/contentful";
+import { capitalize } from "../utils/capitalize";
 import Recipe from "../components/Recipe";
 
 export const getStaticProps = async (context) => {
@@ -110,7 +111,7 @@ export default function Home({ recipes, term }) {
   return (
     <Box>
       <Head>
-        <title>{term} | Koleksi Resepi Khairulaming</title>
+        <title>{capitalize(term)} | Koleksi Resepi Khairulaming</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Flex

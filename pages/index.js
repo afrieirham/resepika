@@ -1,4 +1,13 @@
-import { Box, Flex, Input, Link, SimpleGrid, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Flex,
+  Input,
+  Link,
+  SimpleGrid,
+  Text,
+  VStack,
+} from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import Recipe from "../components/Recipe";
 
@@ -47,7 +56,7 @@ export default function Home({ recipes }) {
     <Box>
       <Flex
         direction="column"
-        h="15vh"
+        my="6"
         mx="auto"
         w="full"
         maxW="sm"
@@ -67,6 +76,35 @@ export default function Home({ recipes }) {
         />
       </Flex>
 
+      <VStack
+        bg="white"
+        w="full"
+        maxWidth="3xl"
+        mx="auto"
+        my="6"
+        p="4"
+        borderColor="gray.300"
+        borderRadius={{ base: "none", md: "md" }}
+        justifyContent="center"
+      >
+        <Text fontSize="xs" color="gray.700">
+          Iklan by Afrie Irham
+        </Text>
+        <Text textAlign="center">
+          Cari kerja menggunakan &quot;kabel&quot; dengan 👇
+        </Text>
+
+        <Button
+          mx="auto"
+          as="a"
+          w={{ base: "full", sm: "sm" }}
+          href="https://carikabel.com"
+          target="_blank"
+        >
+          CariKabel.com
+        </Button>
+      </VStack>
+
       <SimpleGrid
         mx="auto"
         spacing={{ base: 1, sm: 2 }}
@@ -78,7 +116,7 @@ export default function Home({ recipes }) {
 
       <Flex py="4" justifyContent="center" alignItems="center" h="5vh">
         <Text color="gray.500" fontSize="xs" textAlign="center">
-          <Link href="https://afrieirham.com" isExternal>
+          <Link href="https://bento.me/afrieirham" isExternal>
             Made with ❤️ by Afrie
           </Link>
         </Text>

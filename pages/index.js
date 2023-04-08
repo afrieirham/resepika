@@ -1,8 +1,7 @@
-import { Box, Flex, Input, Link, SimpleGrid, Text } from "@chakra-ui/react";
+import { Box, Flex, Input, Text } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 
 import { recipes } from "../data/recipes";
-import Recipe from "../components/Recipe";
 import BannerAds from "../components/BannerAds";
 import RecipesGrid from "../components/RecipesGrid";
 import Footer from "../components/Footer";

@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { Box, Button, Flex, Link, SimpleGrid, Text } from "@chakra-ui/react";
+import { Box, Button, Flex, Text } from "@chakra-ui/react";
 
 import { recipes } from "../data/recipes";
 import { capitalize } from "../utils/capitalize";

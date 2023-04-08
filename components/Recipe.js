@@ -1,18 +1,18 @@
 import React from "react";
 import { AspectRatio, Flex, Img, Link, Text } from "@chakra-ui/react";
 
-function Recipe({ fields }) {
-  const hasImage = Boolean(fields.thumbnail?.fields.file.url);
-  const imageUrl = fields.thumbnail?.fields.file.url;
+function Recipe({ recipe }) {
+  const hasImage = Boolean(recipe.thumbnail);
+  const imageUrl = "/thumbnails/" + recipe.thumbnail;
 
   return (
-    <Link href={fields.postUrl} isExternal position="relative">
+    <Link href={recipe.postUrl} isExternal position="relative">
       <AspectRatio ratio={1} maxH="250px">
         <Img
           w="full"
           objectFit="cover"
           src={hasImage ? imageUrl : "/recipe-placeholder.png"}
-          alt={fields.title}
+          alt={recipe.title}
         />
       </AspectRatio>
       <Flex
@@ -26,7 +26,7 @@ function Recipe({ fields }) {
         padding="2"
         color="white"
       >
-        <Text fontSize="sm">{fields.title}</Text>
+        <Text fontSize="sm">{recipe.title}</Text>
       </Flex>
     </Link>
   );

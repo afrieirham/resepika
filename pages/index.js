@@ -9,48 +9,22 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
+
+import { recipes } from "../data/recipes";
 import Recipe from "../components/Recipe";
 
-import { client } from "../utils/contentful";
-
-export const getStaticProps = async () => {
-  const response = await client.getEntries({ limit: 1000 });
-
-  // Sort recipes based on createdAt
-  const recipes = response.items.sort((a, b) => {
-    const i = new Date(a.sys.createdAt);
-    const j = new Date(b.sys.createdAt);
-    return j - i;
-  });
-
-  return {
-    props: {
-      recipes,
-    },
-    // Next.js will attempt to re-generate the page:
-    // - When a request comes in
-    // - Every 10 minutes
-    revalidate: 60 * 10,
-  };
-};
-
-export default function Home({ recipes }) {
+export default function Home() {
   const [filtered, setFiltered] = useState(recipes);
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     const filtered = recipes.filter((item) => {
-      const currentRecipe = item.fields.title.toLowerCase();
+      const currentRecipe = item.title.toLowerCase();
       return currentRecipe.includes(searchTerm);
     });
 
     setFiltered(filtered);
-  }, [searchTerm, recipes]);
-
-  const renderItems = () =>
-    filtered.map(({ fields }) => (
-      <Recipe key={fields.postUrl} fields={fields} />
-    ));
+  }, [searchTerm]);
 
   return (
     <Box>
@@ -111,7 +85,9 @@ export default function Home({ recipes }) {
         columns={{ base: 1, sm: 2, md: 3 }}
         maxWidth="3xl"
       >
-        {renderItems()}
+        {filtered.map((r) => (
+          <Recipe key={r.postUrl} recipe={r} />
+        ))}
       </SimpleGrid>
 
       <Flex py="4" justifyContent="center" alignItems="center" h="5vh">

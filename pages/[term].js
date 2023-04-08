@@ -1,32 +1,18 @@
 import Head from "next/head";
 import { Box, Button, Flex, Link, SimpleGrid, Text } from "@chakra-ui/react";
 
-import { client } from "../utils/contentful";
+import { recipes } from "../data/recipes";
 import { capitalize } from "../utils/capitalize";
 import Recipe from "../components/Recipe";
 
 export const getStaticProps = async (context) => {
-  const cleanTerm = context?.params?.term?.replace(/-/g, " ");
-  const response = await client.getEntries({
-    content_type: "recipe",
-    limit: 1000,
-    "fields.title[match]": cleanTerm,
-  });
-
-  // Sort recipes based on createdAt
-  const recipes = response.items.sort((a, b) => {
-    const i = new Date(a.sys.createdAt);
-    const j = new Date(b.sys.createdAt);
-    return j - i;
-  });
+  const cleanTerm = context?.params?.term?.replace(/-/g, " ").toLowerCase();
 
   return {
     props: {
-      recipes,
+      recipes: recipes.filter((r) => r.title.toLowerCase().includes(cleanTerm)),
       term: cleanTerm,
     },
-    // - Every 1 hour
-    revalidate: 60 * 60 * 1,
   };
 };
 
@@ -103,11 +89,6 @@ export async function getStaticPaths() {
 export default function Home({ recipes, term }) {
   const hasRecepis = recipes?.length > 0;
 
-  const renderItems = () =>
-    recipes?.map(({ fields }) => (
-      <Recipe key={fields.postUrl} fields={fields} />
-    ));
-
   return (
     <Box>
       <Head>
@@ -149,7 +130,9 @@ export default function Home({ recipes, term }) {
         columns={{ base: 1, sm: 2, md: 3 }}
         maxWidth="3xl"
       >
-        {renderItems()}
+        {recipes?.map((r) => (
+          <Recipe key={r.postUrl} recipe={r} />
+        ))}
       </SimpleGrid>
 
       <Flex py="4" justifyContent="center" alignItems="center" h="5vh">

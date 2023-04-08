@@ -3,8 +3,9 @@ import { Box, Button, Flex, Link, SimpleGrid, Text } from "@chakra-ui/react";
 
 import { recipes } from "../data/recipes";
 import { capitalize } from "../utils/capitalize";
-import Recipe from "../components/Recipe";
+import RecipesGrid from "../components/RecipesGrid";
 import BannerAds from "../components/BannerAds";
+import Footer from "../components/Footer";
 
 export const getStaticProps = async (context) => {
   const cleanTerm = context?.params?.term?.replace(/-/g, " ").toLowerCase();
@@ -126,24 +127,8 @@ export default function Home({ recipes, term }) {
       </Flex>
 
       <BannerAds />
-
-      <SimpleGrid
-        mx="auto"
-        spacing={{ base: 1, sm: 2 }}
-        columns={{ base: 1, sm: 2, md: 3 }}
-        maxWidth="3xl"
-      >
-        {recipes?.map((r) => (
-          <Recipe key={r.postUrl} recipe={r} />
-        ))}
-      </SimpleGrid>
-      <Flex py="4" justifyContent="center" alignItems="center" h="5vh">
-        <Text color="gray.500" fontSize="xs" textAlign="center">
-          <Link href="https://afrieirham.com" isExternal>
-            Made with ❤️ by Afrie
-          </Link>
-        </Text>
-      </Flex>
+      <RecipesGrid recipes={recipes} />
+      <Footer />
     </Box>
   );
 }

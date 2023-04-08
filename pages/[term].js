@@ -4,6 +4,7 @@ import { Box, Button, Flex, Link, SimpleGrid, Text } from "@chakra-ui/react";
 import { recipes } from "../data/recipes";
 import { capitalize } from "../utils/capitalize";
 import Recipe from "../components/Recipe";
+import BannerAds from "../components/BannerAds";
 
 export const getStaticProps = async (context) => {
   const cleanTerm = context?.params?.term?.replace(/-/g, " ").toLowerCase();
@@ -119,10 +120,12 @@ export default function Home({ recipes, term }) {
             Alamak, tak ada la resepi tu...
           </Text>
         )}
-        <Button my="4" size="lg" as="a" href="/">
+        <Button mt="4" size="lg" as="a" href="/">
           Cari resepi lain...
         </Button>
       </Flex>
+
+      <BannerAds />
 
       <SimpleGrid
         mx="auto"
@@ -134,7 +137,6 @@ export default function Home({ recipes, term }) {
           <Recipe key={r.postUrl} recipe={r} />
         ))}
       </SimpleGrid>
-
       <Flex py="4" justifyContent="center" alignItems="center" h="5vh">
         <Text color="gray.500" fontSize="xs" textAlign="center">
           <Link href="https://afrieirham.com" isExternal>

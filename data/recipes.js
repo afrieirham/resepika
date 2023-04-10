@@ -1,5 +1,15 @@
 export const recipes = [
   {
+    title: "Puasa ke-19: SALTED EGG CHICKEN 🐔",
+    postUrl: "https://www.instagram.com/p/Cq1_aAQAPnK/",
+    thumbnail: "340821236_953169515837587_5409431686422774774_n.jpg",
+  },
+  {
+    title: "Puasa ke-18 : Nasi Goreng Belacan ala Thai",
+    postUrl: "https://www.instagram.com/p/CqzgF0lAfEs/",
+    thumbnail: "340153218_225300773422385_8063850239368594093_n.jpg",
+  },
+  {
     title: "Puasa ke-17 : Pisang Custard Butterscotch",
     postUrl: "https://www.instagram.com/p/Cqw7vWbAapF/",
     thumbnail: "339973106_1288828341843111_5124374733172211629_n.jpg",

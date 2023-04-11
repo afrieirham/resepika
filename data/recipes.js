@@ -1,5 +1,10 @@
 export const recipes = [
   {
+    title: "Puasa ke-20 : Chicken Alfredo Pasta",
+    postUrl: "https://www.instagram.com/p/Cq4lSTeA6xF/",
+    thumbnail: "340468700_1412199585987841_1299836194041693796_n.jpg",
+  },
+  {
     title: "Puasa ke-19: SALTED EGG CHICKEN 🐔",
     postUrl: "https://www.instagram.com/p/Cq1_aAQAPnK/",
     thumbnail: "340821236_953169515837587_5409431686422774774_n.jpg",

@@ -1,4 +1,6 @@
 import React from "react";
+import Image from "next/image";
+
 import { AspectRatio, Flex, Img, Link, Text } from "@chakra-ui/react";
 
 function Recipe({ recipe }) {
@@ -9,6 +11,8 @@ function Recipe({ recipe }) {
     <Link href={recipe.postUrl} isExternal position="relative">
       <AspectRatio ratio={1} maxH="250px">
         <Img
+          as={Image}
+          layout="fill"
           w="full"
           objectFit="cover"
           src={hasImage ? imageUrl : "/recipe-placeholder.png"}

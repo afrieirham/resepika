@@ -1,5 +1,10 @@
 export const recipes = [
   {
+    title: "Puasa ke-21 : LONTONG KUAH LODEH 🍲",
+    postUrl: "https://www.instagram.com/p/Cq7GRdZAMW-/",
+    thumbnail: "340500814_933652921109527_7004350420790822680_n.jpg",
+  },
+  {
     title: "Puasa ke-20 : Chicken Alfredo Pasta",
     postUrl: "https://www.instagram.com/p/Cq4lSTeA6xF/",
     thumbnail: "340468700_1412199585987841_1299836194041693796_n.jpg",

@@ -1,5 +1,10 @@
 export const recipes = [
   {
+    title: "Puasa ke-22 : Cornflakes Madu Biscoff",
+    postUrl: "https://www.instagram.com/p/Cq9wLgAg_xJ/",
+    thumbnail: "340993248_1101945527863689_1316521153806743862_n.jpg",
+  },
+  {
     title: "Puasa ke-21 : LONTONG KUAH LODEH 🍲",
     postUrl: "https://www.instagram.com/p/Cq7GRdZAMW-/",
     thumbnail: "340500814_933652921109527_7004350420790822680_n.jpg",

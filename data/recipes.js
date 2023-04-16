@@ -1,5 +1,20 @@
 export const recipes = [
   {
+    title: "Puasa ke-25 : Nasi Tomato & Acar",
+    postUrl: "https://www.instagram.com/p/CrFkDzwgApr/",
+    thumbnail: "341521825_139622185744264_2588182610867403105_n.jpg",
+  },
+  {
+    title: "Puasa ke-24 : Daging Dendeng",
+    postUrl: "https://www.instagram.com/p/CrC60MkgBdE/",
+    thumbnail: "341873375_607696257908480_2087568684083493162_n.jpg",
+  },
+  {
+    title: "Puasa ke-23 : Cadbury Tart 🍫",
+    postUrl: "https://www.instagram.com/p/CrAN9fZgEUG/",
+    thumbnail: "340814461_220846203874987_273200330152548609_n.jpg",
+  },
+  {
     title: "Puasa ke-22 : Cornflakes Madu Biscoff",
     postUrl: "https://www.instagram.com/p/Cq9wLgAg_xJ/",
     thumbnail: "340993248_1101945527863689_1316521153806743862_n.jpg",

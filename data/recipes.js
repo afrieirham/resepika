@@ -1,5 +1,10 @@
 export const recipes = [
   {
+    title: "Puasa ke-26: KEK COKLAT KUKUS 🔥",
+    postUrl: "https://www.instagram.com/p/CrH9y5jAcNt/",
+    thumbnail: "341725490_743330367271551_6748586451268146432_n.jpg",
+  },
+  {
     title: "Puasa ke-25 : Nasi Tomato & Acar",
     postUrl: "https://www.instagram.com/p/CrFkDzwgApr/",
     thumbnail: "341521825_139622185744264_2588182610867403105_n.jpg",

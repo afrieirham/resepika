@@ -1,5 +1,10 @@
 export const recipes = [
   {
+    title: "Resepi Rendang 1 Ekor Ayam",
+    postUrl: "https://www.instagram.com/p/CrKjDlSAHJ7/",
+    thumbnail: "341925641_229492622996728_3400535946662763802_n.jpg",
+  },
+  {
     title: "Puasa ke-26: KEK COKLAT KUKUS 🔥",
     postUrl: "https://www.instagram.com/p/CrH9y5jAcNt/",
     thumbnail: "341725490_743330367271551_6748586451268146432_n.jpg",

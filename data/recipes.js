@@ -1,5 +1,15 @@
 export const recipes = [
   {
+    title: "Puasa ke-29 : Popia Simpul & Popia Seaweed",
+    postUrl: "https://www.instagram.com/p/CrPnyKbgsMF/",
+    thumbnail: "341873367_947231769812330_4663316387503500073_n.jpg",
+  },
+  {
+    title: "Puasa ke-28 : Pulut Kuning",
+    postUrl: "https://www.instagram.com/p/CrNO7DQgKRf/",
+    thumbnail: "341562997_779707206824511_4657363686176793547_n.jpg",
+  },
+  {
     title: "Resepi Rendang 1 Ekor Ayam",
     postUrl: "https://www.instagram.com/p/CrKjDlSAHJ7/",
     thumbnail: "341925641_229492622996728_3400535946662763802_n.jpg",

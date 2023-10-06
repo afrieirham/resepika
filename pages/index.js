@@ -43,7 +43,7 @@ export default function Home() {
         />
       </Flex>
 
-      <BannerAds />
+      {/* <BannerAds /> */}
       <RecipesGrid recipes={filtered} />
       <Footer />
     </Box>

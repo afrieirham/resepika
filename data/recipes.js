@@ -1,5 +1,45 @@
 export const recipes = [
   {
+    title: "Ayam Goreng Bawang Putih & Telur Itik Masak Lemak Cili Api 🔥",
+    postUrl: "https://www.instagram.com/p/CxKKiO4Pj8K/",
+    thumbnail: "378086750_169229539488703_6336954319711906730_n.jpg",
+  },
+  {
+    title: "Cekodok Pisang",
+    postUrl: "https://www.instagram.com/p/CxFlIWbvyKD/",
+    thumbnail: "377892898_267144379569965_3459849084264251490_n.jpg",
+  },
+  {
+    title: "Cheezy Korean Chicken",
+    postUrl: "https://www.instagram.com/p/Cwg-A45B6Hv/",
+    thumbnail: "370072222_1742764646239221_499703485165870483_n.jpg",
+  },
+  {
+    title: "Nasi goreng kampung extra pedas, extra belacan dan extra kick",
+    postUrl: "https://www.instagram.com/p/CvL_YEMgqVW/",
+    thumbnail: "363746001_242023078772558_2354678549829936991_n.jpg",
+  },
+  {
+    title: "Ayam Kewpie campur Sambal Nyet",
+    postUrl: "https://www.instagram.com/p/CvEObIkAaa-/",
+    thumbnail: "362649402_802762197960524_5054535989716277723_n.jpg",
+  },
+  {
+    title: "Sup Tulang",
+    postUrl: "https://www.instagram.com/p/CuBWcIWgjCx/",
+    thumbnail: "356619546_840381197504502_1173758789629721970_n.jpg",
+  },
+  {
+    title: "Chocolate Cookies",
+    postUrl: "https://www.instagram.com/p/Ct0b96NAk-f/",
+    thumbnail: "355909348_571356041830616_3976339192587077605_n.jpg",
+  },
+  {
+    title: "Maggi Goreng Pedas",
+    postUrl: "https://www.instagram.com/p/CtssvE_geBg/",
+    thumbnail: "354574728_1269377860608154_3272477106531974520_n.jpg",
+  },
+  {
     title: "Puasa ke-29 : Popia Simpul & Popia Seaweed",
     postUrl: "https://www.instagram.com/p/CrPnyKbgsMF/",
     thumbnail: "341873367_947231769812330_4663316387503500073_n.jpg",

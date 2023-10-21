@@ -5,7 +5,7 @@ function BannerAds() {
   return (
     <Flex
       as={Link}
-      href="https://shope.ee/qIEzuP6t4"
+      href="https://dub.sh/sambal-nyet"
       isExternal
       bg="yellow.50"
       maxW="3xl"

@@ -1,37 +1,42 @@
 import React from "react";
-import { Button } from "@chakra-ui/button";
-import { Text, VStack } from "@chakra-ui/layout";
+import { Flex, Image, Heading, Text, Link } from "@chakra-ui/react";
 
 function BannerAds() {
   return (
-    <VStack
-      bg="white"
-      w="full"
-      maxWidth="3xl"
+    <Flex
+      as={Link}
+      href="https://shope.ee/qIEzuP6t4"
+      isExternal
+      bg="yellow.50"
+      maxW="3xl"
       mx="auto"
-      my="6"
-      p="4"
-      borderColor="gray.300"
-      borderRadius={{ base: "none", md: "md" }}
-      justifyContent="center"
+      mb="6"
+      borderColor="yellow.400"
+      borderWidth="1px"
+      borderRadius="md"
+      _hover={{ textDecoration: "none" }}
     >
-      <Text fontSize="xs" color="gray.700">
-        Iklan by Afrie Irham
-      </Text>
-      <Text textAlign="center">
-        Cari kerja menggunakan &quot;kabel&quot; dengan 👇
-      </Text>
+      <Image
+        src="./sambal-nyet.jpeg"
+        alt="gambar sambal nyet"
+        objectFit="cover"
+        borderLeftRadius="md"
+        w="100px"
+        h="100px"
+      />
 
-      <Button
-        mx="auto"
-        as="a"
-        w={{ base: "full", sm: "sm" }}
-        href="https://carikabel.com"
-        target="_blank"
-      >
-        CariKabel.com
-      </Button>
-    </VStack>
+      <Flex direction="column" justifyContent="center" p="4">
+        <Heading size="sm">
+          Buy Sambal Nyet Official By Khairulaming Here
+        </Heading>
+        <Text fontSize="xs" color="gray.700" mt="2">
+          This is an affiliate link.
+          <br />
+          We may earn a commission when you make a purchase through them. Your
+          support is appreciated.
+        </Text>
+      </Flex>
+    </Flex>
   );
 }
 

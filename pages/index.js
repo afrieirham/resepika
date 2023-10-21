@@ -42,8 +42,7 @@ export default function Home() {
           onChange={(e) => setSearchTerm(e.target.value.toLocaleLowerCase())}
         />
       </Flex>
-
-      {/* <BannerAds /> */}
+      <BannerAds />
       <RecipesGrid recipes={filtered} />
       <Footer />
     </Box>

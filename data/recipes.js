@@ -1,5 +1,35 @@
 export const recipes = [
   {
+    title: "Tom Yum Goong & Koktel Buah Naga",
+    postUrl: "https://www.instagram.com/p/C0-3DopvB9n/",
+    thumbnail: "411911079_1500889484067029_2274057137398382083_n.jpg",
+  },
+  {
+    title: "Pasta Simple Sambal Nyet",
+    postUrl: "https://www.instagram.com/p/C03G7VjvHOO/",
+    thumbnail: "410199353_347704394650379_4053135633913032967_n.jpg",
+  },
+  {
+    title: "Burger ala prosperity McMing",
+    postUrl: "https://www.instagram.com/p/C0ifyaHvff7/",
+    thumbnail: "408050682_370143432094849_3961999546718017206_n.jpg",
+  },
+  {
+    title: "Bihun PAMA Sambal Nyet",
+    postUrl: "https://www.instagram.com/p/Cz5yuGBvU5d/",
+    thumbnail: "403769751_300993319517950_6877840511095754556_n.jpg",
+  },
+  {
+    title: "Fish & Chips + Creamy Cajun Pasta 😋",
+    postUrl: "https://www.instagram.com/p/CzsbAOcPSTX/",
+    thumbnail: "402587654_1057391155284657_2622936745887443879_n.jpg",
+  },
+  {
+    title: "Sambal Nyet dengan Ayam Goreng Kunyit",
+    postUrl: "https://www.instagram.com/p/Cyhyg8rPkd9/",
+    thumbnail: "393556565_647702160685584_1417990740916314588_n.jpg",
+  },
+  {
     title: "Ayam Goreng Bawang Putih & Telur Itik Masak Lemak Cili Api 🔥",
     postUrl: "https://www.instagram.com/p/CxKKiO4Pj8K/",
     thumbnail: "378086750_169229539488703_6336954319711906730_n.jpg",

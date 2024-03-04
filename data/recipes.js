@@ -1,5 +1,15 @@
 export const recipes = [
   {
+    title: "Nasi Goreng Cili Kering 🌶️🔥",
+    postUrl: "https://www.instagram.com/p/C39XzKhPY-w/",
+    thumbnail: "430253244_941080977544911_918850661528543656_n.jpg",
+  },
+  {
+    title: "Hot Chocolate Cicah Croissant, Matcha Latte & Iced Lemon Tea Longan",
+    postUrl: "https://www.instagram.com/p/C1bH-AjPwql/",
+    thumbnail: "413289063_341016598875376_2631299969564406947_n.jpg",
+  },
+  {
     title: "Tom Yum Goong & Koktel Buah Naga",
     postUrl: "https://www.instagram.com/p/C0-3DopvB9n/",
     thumbnail: "411911079_1500889484067029_2274057137398382083_n.jpg",

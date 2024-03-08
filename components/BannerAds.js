@@ -1,42 +1,84 @@
+import {
+  Card,
+  CardBody,
+  Heading,
+  Image,
+  Link,
+  Stack,
+  Text,
+} from "@chakra-ui/react";
 import React from "react";
-import { Flex, Image, Heading, Text, Link } from "@chakra-ui/react";
 
 function BannerAds() {
   return (
-    <Flex
-      as={Link}
-      href="https://dub.sh/sambal-nyet"
-      isExternal
-      bg="yellow.50"
-      maxW="3xl"
-      mx="auto"
-      mb="6"
-      borderColor="yellow.400"
-      borderWidth="1px"
-      borderRadius="md"
-      _hover={{ textDecoration: "none" }}
-    >
-      <Image
-        src="./sambal-nyet.jpeg"
-        alt="gambar sambal nyet"
-        objectFit="cover"
-        borderLeftRadius="md"
-        w="100px"
-        h="100px"
-      />
+    <Stack mb="6">
+      <Card
+        as={Link}
+        href="https://dub.sh/sambal-nyet"
+        isExternal
+        maxW="3xl"
+        mx="auto"
+        direction={{ base: "column", sm: "row" }}
+        overflow="hidden"
+        variant="outline"
+        _hover={{ textDecoration: "none" }}
+      >
+        <Image
+          objectFit="cover"
+          w="full"
+          maxW={{ base: "100%", sm: "160px" }}
+          maxH={{ base: "160px" }}
+          src="./sambal-nyet.jpeg"
+          alt="gambar sambal nyet"
+        />
 
-      <Flex direction="column" justifyContent="center" p="4">
-        <Heading size="sm">
-          Buy Sambal Nyet Official By Khairulaming Here
-        </Heading>
-        <Text fontSize="xs" color="gray.700" mt="2">
-          This is an affiliate link.
-          <br />
-          We may earn a commission when you make a purchase through them. Your
-          support is appreciated.
-        </Text>
-      </Flex>
-    </Flex>
+        <Stack>
+          <CardBody>
+            <Heading size="md">
+              Buy Sambal Nyet Official By Khairulaming Here
+            </Heading>
+
+            <Text py="2">
+              This is an affiliate link. We may earn a commission when you make
+              a purchase through them. Your support is appreciated.
+            </Text>
+          </CardBody>
+        </Stack>
+      </Card>
+      <Card
+        as={Link}
+        href="https://dub.sh/dendeng-nyet"
+        isExternal
+        maxW="3xl"
+        mx="auto"
+        direction={{ base: "column", sm: "row" }}
+        overflow="hidden"
+        variant="outline"
+        _hover={{ textDecoration: "none" }}
+      >
+        <Image
+          objectFit="cover"
+          w="full"
+          maxW={{ base: "100%", sm: "160px" }}
+          maxH={{ base: "160px" }}
+          src="./dendeng-nyet.jpeg"
+          alt="gambar dendeng nyet"
+        />
+
+        <Stack>
+          <CardBody>
+            <Heading size="md">
+              Buy Dendeng Nyet Official By Khairulaming Here
+            </Heading>
+
+            <Text py="2">
+              This is an affiliate link. We may earn a commission when you make
+              a purchase through them. Your support is appreciated.
+            </Text>
+          </CardBody>
+        </Stack>
+      </Card>
+    </Stack>
   );
 }
 

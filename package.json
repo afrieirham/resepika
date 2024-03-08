@@ -9,15 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@chakra-ui/react": "^1.7.3",
+    "@chakra-ui/react": "^2.8.2",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
     "@vercel/analytics": "^0.1.5",
-    "framer-motion": "^4",
+    "framer-motion": "^11.0.8",
     "next": "12.0.7",
     "next-sitemap": "^3.1.52",
-    "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "eslint": "8.4.1",

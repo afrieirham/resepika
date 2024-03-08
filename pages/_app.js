@@ -9,7 +9,7 @@ function MyApp({ Component, pageProps }) {
   const meta = {
     title: "Koleksi Resepi Khairulaming",
     description: "Koleksi resepi daripada account @khairulaming di Instagram.",
-    image: "https://resepi-khairulaming.vercel.app/og.png",
+    image: "https://resepika.com/og.png",
     type: "website",
   };
 

@@ -1,5 +1,5 @@
-import List from "@/component/List";
-import SEOHead from "@/component/SEAHead";
+import List from "@/components/List";
+import SEOHead from "@/components/SEAHead";
 
 export default function Home() {
   return (

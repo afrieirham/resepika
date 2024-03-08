@@ -1615,3 +1615,5 @@ export const recipes = [
     thumbnail: "Breakfast_Egg_Muffin.jpeg",
   },
 ];
+
+export type Resepi = (typeof recipes)[0];

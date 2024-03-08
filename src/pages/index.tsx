@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { recipes } from "../../public/data/recipes";
+import SEOHead from "@/component/SEAHead";
 
 export default function Home() {
   const [filtered, setFiltered] = useState(recipes);
@@ -16,6 +17,12 @@ export default function Home() {
 
   return (
     <main className="flex flex-col max-w-screen-lg mx-auto ">
+      <SEOHead
+        title="Koleksi Resepi Khairulaming | ResepiKA.com"
+        description="Koleksi resepi daripada account @khairulaming di Instagram."
+        path="/"
+        ogPath="/og.png"
+      />
       <div className="flex flex-col w-full p-8 space-y-2">
         <h1 className="text-lg font-bold text-center sm:text-xl">
           Koleksi Resepi KhairulAming

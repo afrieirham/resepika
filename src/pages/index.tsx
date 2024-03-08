@@ -1,22 +1,34 @@
 import { useEffect, useState } from "react";
-import { recipes } from "../../public/data/recipes";
+
 import SEOHead from "@/component/SEAHead";
+import { recipes } from "../../public/data/recipes";
 
 export default function Home() {
   const [filtered, setFiltered] = useState(recipes);
   const [searchTerm, setSearchTerm] = useState("");
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     const filtered = recipes.filter((item) => {
       const currentRecipe = item.title.toLowerCase();
       return currentRecipe.includes(searchTerm);
     });
 
-    setFiltered(filtered);
+    const timeout = setTimeout(() => {
+      setFiltered(filtered);
+      setLoading(false);
+    }, 500);
+
+    return () => clearTimeout(timeout);
   }, [searchTerm]);
 
   return (
-    <main className="flex flex-col max-w-screen-lg mx-auto ">
+    <main
+      className={`flex flex-col max-w-screen-lg mx-auto pb-8 ${
+        loading ? "animate-pulse" : ""
+      }`}
+    >
       <SEOHead
         title="Koleksi Resepi Khairulaming | ResepiKA.com"
         description="Koleksi resepi daripada account @khairulaming di Instagram."
@@ -24,8 +36,15 @@ export default function Home() {
         ogPath="/og.png"
       />
       <div className="flex flex-col w-full p-8 space-y-2">
-        <h1 className="text-lg font-bold text-center sm:text-xl">
-          Koleksi Resepi KhairulAming
+        <h1 className="text-xl text-center">
+          Koleksi Resepi @
+          <a
+            className="hover:underline"
+            href="https://instagram.com/khairulaming"
+            target="_blank"
+          >
+            KhairulAming
+          </a>
         </h1>
         <input
           value={searchTerm}
@@ -50,6 +69,9 @@ export default function Home() {
           </a>
         ))}
       </div>
+      {filtered.length === 0 && (
+        <p className="text-center">Resepi tidak wujud</p>
+      )}
     </main>
   );
 }

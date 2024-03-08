@@ -1,8 +1,8 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import { useRouter } from "next/router";
 
-import List from "@/component/List";
-import SEOHead from "@/component/SEAHead";
+import List from "@/components/List";
+import SEOHead from "@/components/SEAHead";
 
 export const getStaticProps: GetStaticProps<{}> = async () => {
   return { props: {} };

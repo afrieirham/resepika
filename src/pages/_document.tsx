@@ -1,3 +1,4 @@
+import BuiltBy from "@/components/BuiltBy";
 import { Html, Head, Main, NextScript } from "next/document";
 
 export default function Document() {
@@ -13,6 +14,7 @@ export default function Document() {
       <body className="bg-gray-50">
         <Main />
         <NextScript />
+        <BuiltBy />
       </body>
     </Html>
   );

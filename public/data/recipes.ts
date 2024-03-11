@@ -1,5 +1,10 @@
 export const recipes = [
   {
+    title: "Telur Dadar Pad Kra Pao",
+    postUrl: "https://www.instagram.com/p/C4X21ukPruc/",
+    thumbnail: "432588462_369024472721802_7641314619977038018_n.jpg",
+  },
+  {
     title: "Nasi Goreng Cili Kering 🌶️🔥",
     postUrl: "https://www.instagram.com/p/C39XzKhPY-w/",
     thumbnail: "430253244_941080977544911_918850661528543656_n.jpg",

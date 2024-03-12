@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 
-import { recipes } from "../../public/data/recipes";
+import { Resepi } from "@/pages";
 
-function List({ term }: { term: string }) {
-  const [filtered, setFiltered] = useState(recipes);
+function List({ resepi, term }: { term: string; resepi: Resepi[] }) {
+  const [filtered, setFiltered] = useState(resepi);
   const [searchTerm, setSearchTerm] = useState(term);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setLoading(true);
-    const filtered = recipes.filter((item) => {
+    const filtered = resepi.filter((item) => {
       const currentRecipe = item.title.toLowerCase();
       return currentRecipe.includes(searchTerm);
     });
@@ -98,7 +98,7 @@ function List({ term }: { term: string }) {
             className="relative flex flex-col p-4 space-y-2 transition-all duration-300 ease-out rounded-xl hover:bg-gray-100 hover:-translate-y-1"
           >
             <img
-              src={`/thumbnails/${resepi.thumbnail}`}
+              src={resepi.thumbnail}
               className="object-cover aspect-square max-h-[200px] rounded-md"
             />
             <p className="text-sm font-medium text-gray-900">{resepi.title}</p>

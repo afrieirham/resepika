@@ -1,11 +1,27 @@
-import { GetStaticPaths, GetStaticProps } from "next";
+import {
+  GetStaticPaths,
+  GetStaticProps,
+  InferGetServerSidePropsType,
+} from "next";
 import { useRouter } from "next/router";
 
 import List from "@/components/List";
 import SEOHead from "@/components/SEAHead";
+import { Resepi } from ".";
 
-export const getStaticProps: GetStaticProps<{}> = async () => {
-  return { props: {} };
+export const getStaticProps: GetStaticProps<{
+  resepi: Resepi[];
+}> = async () => {
+  const resepiRes = await fetch("https://api.resepika.com/resepi");
+  const resepi: Resepi[] = await resepiRes.json();
+
+  return {
+    props: {
+      resepi,
+    },
+    // revalidate every 1 minute
+    revalidate: 60 * 1,
+  };
 };
 
 export const getStaticPaths: GetStaticPaths = () => {
@@ -72,7 +88,7 @@ export const getStaticPaths: GetStaticPaths = () => {
   };
 };
 
-function Term() {
+function Term({ resepi }: InferGetServerSidePropsType<typeof getStaticProps>) {
   const router = useRouter();
 
   const term = router.query.term;
@@ -96,7 +112,7 @@ function Term() {
         path="/"
         ogPath="/og.png"
       />
-      <List term={cleanTerm} />
+      <List term={cleanTerm} resepi={resepi} />
     </div>
   );
 }

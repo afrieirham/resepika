@@ -1,5 +1,11 @@
 export const recipes = [
   {
+    title:
+      "Tembikai Aiskrim Soda, Zapple Kasturi, Keladi Float & Sirap Laici Selasih",
+    postUrl: "https://www.instagram.com/p/C4ZoQK0yGny/",
+    thumbnail: "432321963_336406115535536_2152018668134225037_n.jpg",
+  },
+  {
     title: "Telur Dadar Pad Kra Pao",
     postUrl: "https://www.instagram.com/p/C4X21ukPruc/",
     thumbnail: "432588462_369024472721802_7641314619977038018_n.jpg",

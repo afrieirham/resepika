@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 import { Resepi } from "@/pages";
@@ -97,8 +98,11 @@ function List({ resepi, term }: { term: string; resepi: Resepi[] }) {
             target="_blank"
             className="relative flex flex-col p-4 space-y-2 transition-all duration-300 ease-out rounded-xl hover:bg-gray-100 hover:-translate-y-1"
           >
-            <img
+            <Image
+              width={1000}
+              height={1000}
               src={resepi.thumbnail}
+              alt={`${resepi.title} thumbnail`}
               className="object-cover aspect-square max-h-[200px] rounded-md"
             />
             <p className="text-sm font-medium text-gray-900">{resepi.title}</p>

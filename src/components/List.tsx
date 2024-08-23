@@ -55,8 +55,17 @@ function List({ resepi, term }: { term: string; resepi: Resepi[] }) {
           placeholder="Cari resepi..."
           className="flex w-full h-10 max-w-sm px-3 py-2 mx-auto text-sm border rounded-md border-input bg-background ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
         />
+        <div className="text-center">
+          <a
+            target="_blank"
+            className="text-xs mt-2 hover:underline"
+            href="https://donate.stripe.com/00gcNN0oc7uId5SaEH"
+          >
+            belanja saya nasi ayam gepuk 🍗
+          </a>
+        </div>
       </div>
-      <p className="px-8 text-xs sm:px-4">
+      <p className="px-8 mt-2 text-xs sm:px-4">
         Shopee affiliate (Official Product)
       </p>
       <div className="grid grid-cols-1 gap-2 px-8 mt-2 sm:px-4 sm:grid-cols-2">

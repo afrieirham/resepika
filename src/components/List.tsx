@@ -26,12 +26,12 @@ function List({ resepi, term }: { term: string; resepi: Resepi[] }) {
   const affiliates = [
     {
       name: "Sambal Nyet",
-      linkUrl: "https://dub.sh/sambal-nyet",
+      linkUrl: "https://go.resepika.com/sambal-nyet",
       photoUrl: "/sambal-nyet.jpeg",
     },
     {
       name: "Dendeng Nyet",
-      linkUrl: "https://dub.sh/dendeng-nyet",
+      linkUrl: "https://go.resepika.com/dendeng-nyet",
       photoUrl: "/dendeng-nyet.jpeg",
     },
   ];

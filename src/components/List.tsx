@@ -51,7 +51,7 @@ function List({ resepi, term }: { term: string; resepi: Resepi[] }) {
     subtitle:
       "Website ini telah menerima lebih kurang 2,800 page views dalam 28 hari lepas. Iklankan produk anda disini dan produk anda akan tampil dihadapan ribuan pengunjung.",
     ctaText: "Iklankan produk saya",
-    ctaUrl: "#",
+    ctaUrl: "https://buy.stripe.com/aEUdRRgnaeXa5Dq8wC",
     photoUrlDesktop: "/ads-desktop.png",
     expiredAt: null,
   };

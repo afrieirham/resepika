@@ -15,12 +15,6 @@ export default function Document() {
           src="https://analytics.afrieirham.com/script.js"
           data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
         />
-        <meta name="google-adsense-account" content="ca-pub-5654598090665312" />
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5654598090665312"
-          crossOrigin="anonymous"
-        />
       </Head>
       <body className="bg-gray-50">
         <Main />

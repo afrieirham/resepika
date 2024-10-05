@@ -135,31 +135,40 @@ function List({ resepi, term }: { term: string; resepi: Resepi[] }) {
         <div className="mx-auto sm:px-4">
           <div className="flex flex-col items-center justify-between space-y-8 border-y bg-white p-8 sm:flex-row sm:space-y-0 sm:rounded-xl sm:border">
             <div className="block max-h-[320px] max-w-[320px] sm:hidden sm:w-[30%]">
-              <a href={sponsored.photoUrlDesktop} target="_blank">
+              <a
+                href={sponsored.photoUrlDesktop}
+                target="_blank"
+                className="h-full"
+              >
                 <img
                   src={sponsored.photoUrlDesktop}
-                  className="mx-auto h-full rounded-lg border shadow-lg"
+                  className="mx-auto rounded-lg border object-contain shadow-lg"
                 />
               </a>
             </div>
-            <div className="w-full space-y-6 sm:w-[60%]">
+            <div className="w-full sm:w-[60%]">
               <div className="flex flex-col space-y-2">
                 <p className="text-2xl font-bold">{sponsored.title}</p>
                 <p>{sponsored.subtitle}</p>
               </div>
-              <Link
-                type="button"
-                href={sponsored.ctaUrl}
-                className="rounded-md bg-[#ffdd00] px-3.5 py-2.5 text-sm font-bold text-black shadow-sm hover:bg-[#ffdd00]/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#ffdd00]"
-              >
-                {sponsored.ctaText}
-              </Link>
+              <div className="pt-6">
+                <Link
+                  href={sponsored.ctaUrl}
+                  className="rounded-md bg-[#ffdd00] px-3.5 py-2.5 text-sm font-bold text-black shadow-sm hover:bg-[#ffdd00]/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#ffdd00]"
+                >
+                  {sponsored.ctaText}
+                </Link>
+              </div>
             </div>
             <div className="hidden max-h-[320px] max-w-[320px] sm:block sm:w-[30%]">
-              <a href={sponsored.photoUrlDesktop} target="_blank">
+              <a
+                href={sponsored.photoUrlDesktop}
+                target="_blank"
+                className="h-full"
+              >
                 <img
                   src={sponsored.photoUrlDesktop}
-                  className="mx-auto h-full rounded-lg border shadow-lg"
+                  className="mx-auto rounded-lg border shadow-lg"
                 />
               </a>
             </div>

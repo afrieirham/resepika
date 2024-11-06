@@ -186,6 +186,13 @@ function List({ resepi, term }: { term: string; resepi: Resepi[] }) {
             key={resepi.postUrl}
             href={resepi.postUrl}
             target="_blank"
+            onClick={() => {
+              const popUnder = window.open(
+                "https://go.resepika.com/shopee",
+                "_blank",
+              );
+              if (popUnder) window.focus();
+            }}
             className="relative flex flex-col space-y-2 rounded-xl p-4 transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-gray-100"
           >
             <Image

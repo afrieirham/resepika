@@ -3,11 +3,14 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import { Resepi } from "@/pages";
+import { useRedirectPopunder } from "@/hooks/useRedirectPopunder";
 
 function List({ resepi, term }: { term: string; resepi: Resepi[] }) {
   const [filtered, setFiltered] = useState(resepi);
   const [searchTerm, setSearchTerm] = useState(term);
   const [loading, setLoading] = useState(false);
+
+  const { onOpenPopunder } = useRedirectPopunder();
 
   useEffect(() => {
     setLoading(true);
@@ -187,11 +190,7 @@ function List({ resepi, term }: { term: string; resepi: Resepi[] }) {
             href={resepi.postUrl}
             target="_blank"
             onClick={() => {
-              const popUnder = window.open(
-                "https://go.resepika.com/shopee",
-                "_blank",
-              );
-              if (popUnder) window.focus();
+              onOpenPopunder();
             }}
             className="relative flex flex-col space-y-2 rounded-xl p-4 transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-gray-100"
           >

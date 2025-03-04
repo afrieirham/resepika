@@ -1,5 +1,3 @@
-import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import { Resepi } from "@/pages";
@@ -132,7 +130,7 @@ function List({ resepi, term }: { term: string; resepi: Resepi[] }) {
         ))}
       </div>
 
-      <p className="mt-8 px-8 text-xs sm:px-4">Sponsored</p>
+      {/* <p className="mt-8 px-8 text-xs sm:px-4">Sponsored</p>
 
       <div className="mt-4 w-full">
         <div className="mx-auto sm:px-4">
@@ -177,7 +175,7 @@ function List({ resepi, term }: { term: string; resepi: Resepi[] }) {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
       <div
         className={`mt-6 grid grid-cols-1 gap-2 px-4 sm:grid-cols-2 sm:px-0 md:grid-cols-3 ${
@@ -194,9 +192,7 @@ function List({ resepi, term }: { term: string; resepi: Resepi[] }) {
             }}
             className="relative flex flex-col space-y-2 rounded-xl p-4 transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-gray-100"
           >
-            <Image
-              width={1000}
-              height={1000}
+            <img
               src={resepi.thumbnail}
               alt={`${resepi.title} thumbnail`}
               className="aspect-square max-h-[200px] rounded-md object-cover"

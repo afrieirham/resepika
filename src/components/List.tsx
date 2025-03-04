@@ -193,6 +193,7 @@ function List({ resepi, term }: { term: string; resepi: Resepi[] }) {
             className="relative flex flex-col space-y-2 rounded-xl p-4 transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-gray-100"
           >
             <img
+              loading="lazy"
               src={resepi.thumbnail}
               alt={`${resepi.title} thumbnail`}
               className="aspect-square max-h-[200px] rounded-md object-cover"

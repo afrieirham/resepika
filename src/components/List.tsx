@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 
 import { Resepi } from "@/types";
 import { useRedirectPopunder } from "@/hooks/useRedirectPopunder";
+import { useRouter } from "next/router";
 
 function List({ resepi, term }: { term: string; resepi: Resepi[] }) {
+  const router = useRouter();
   const [filtered, setFiltered] = useState(resepi);
-  const [searchTerm, setSearchTerm] = useState(term);
   const [loading, setLoading] = useState(false);
 
   const { onOpenPopunder } = useRedirectPopunder();
@@ -14,7 +15,7 @@ function List({ resepi, term }: { term: string; resepi: Resepi[] }) {
     setLoading(true);
     const filtered = resepi.filter((item) => {
       const currentRecipe = item.title.toLowerCase();
-      return currentRecipe.includes(searchTerm);
+      return currentRecipe.includes(term);
     });
 
     const timeout = setTimeout(() => {
@@ -23,7 +24,7 @@ function List({ resepi, term }: { term: string; resepi: Resepi[] }) {
     }, 500);
 
     return () => clearTimeout(timeout);
-  }, [searchTerm]);
+  }, [term]);
 
   const affiliates = [
     {
@@ -37,39 +38,6 @@ function List({ resepi, term }: { term: string; resepi: Resepi[] }) {
       photoUrl: "/dendeng-nyet.jpeg",
     },
   ];
-
-  type Sponsored = {
-    title: string;
-    subtitle: string;
-    ctaText: string;
-    ctaUrl: string;
-    photoUrlDesktop: string;
-    expiredAt: null | Date;
-  };
-
-  const adSpotAd = {
-    title: "Iklankan produk anda disini.",
-    subtitle:
-      "Website ini telah menerima lebih kurang 2,800 page views dalam 28 hari lepas. Iklankan produk anda disini dan produk anda akan tampil dihadapan ribuan pengunjung.",
-    ctaText: "Iklankan produk saya",
-    ctaUrl: "https://buy.stripe.com/aEUdRRgnaeXa5Dq8wC",
-    photoUrlDesktop: "/ads-desktop.png",
-    expiredAt: null,
-  };
-
-  // sample
-  const paid = {
-    title: "Sample Ads",
-    subtitle: "This is sample subtitle",
-    ctaText: "Subscribe",
-    ctaUrl: "https://resepika.com/ayam",
-    photoUrlDesktop: "/og.png",
-    expiredAt: new Date("2024-01-01T00:00:00+08:00"),
-  };
-
-  const hasExpired = paid.expiredAt < new Date();
-
-  const sponsored: Sponsored = hasExpired ? adSpotAd : paid;
 
   return (
     <main className="mx-auto flex max-w-screen-lg flex-col pb-8">
@@ -85,8 +53,11 @@ function List({ resepi, term }: { term: string; resepi: Resepi[] }) {
           </a>
         </h1>
         <input
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value.toLocaleLowerCase())}
+          defaultValue={term}
+          onChange={(e) => {
+            const input = e.target.value.toLocaleLowerCase();
+            router.push(`/${input.replaceAll(" ", "-")}`);
+          }}
           placeholder="Cari resepi..."
           className="border-input bg-background ring-offset-background placeholder:text-muted-foreground focus-visible:ring-ring mx-auto flex h-10 w-full max-w-sm rounded-md border px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
         />
@@ -129,53 +100,6 @@ function List({ resepi, term }: { term: string; resepi: Resepi[] }) {
           </div>
         ))}
       </div>
-
-      {/* <p className="mt-8 px-8 text-xs sm:px-4">Sponsored</p>
-
-      <div className="mt-4 w-full">
-        <div className="mx-auto sm:px-4">
-          <div className="flex flex-col items-center justify-between space-y-8 border-y bg-white p-8 sm:flex-row sm:space-y-0 sm:rounded-xl sm:border">
-            <div className="block max-h-[320px] max-w-[320px] sm:hidden sm:w-[30%]">
-              <a
-                href={sponsored.photoUrlDesktop}
-                target="_blank"
-                className="h-full"
-              >
-                <img
-                  src={sponsored.photoUrlDesktop}
-                  className="mx-auto rounded-lg border object-contain shadow-lg"
-                />
-              </a>
-            </div>
-            <div className="w-full sm:w-[60%]">
-              <div className="flex flex-col space-y-2">
-                <p className="text-2xl font-bold">{sponsored.title}</p>
-                <p>{sponsored.subtitle}</p>
-              </div>
-              <div className="pt-6">
-                <Link
-                  href={sponsored.ctaUrl}
-                  className="rounded-md bg-[#ffdd00] px-3.5 py-2.5 text-sm font-bold text-black shadow-sm hover:bg-[#ffdd00]/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#ffdd00]"
-                >
-                  {sponsored.ctaText}
-                </Link>
-              </div>
-            </div>
-            <div className="hidden max-h-[320px] max-w-[320px] sm:block sm:w-[30%]">
-              <a
-                href={sponsored.photoUrlDesktop}
-                target="_blank"
-                className="h-full"
-              >
-                <img
-                  src={sponsored.photoUrlDesktop}
-                  className="mx-auto rounded-lg border shadow-lg"
-                />
-              </a>
-            </div>
-          </div>
-        </div>
-      </div> */}
 
       <div
         className={`mt-6 grid grid-cols-1 gap-2 px-4 sm:grid-cols-2 sm:px-0 md:grid-cols-3 ${

@@ -8,12 +8,27 @@ function Term() {
   const router = useRouter();
 
   const term = router.query.term;
-  if (!term) return null;
 
-  const cleanTerm = String(term).replaceAll("-", " ");
+  if (!term) {
+    return (
+      <div>
+        <SEOHead
+          title="Koleksi Resepi Khairulaming | ResepiKA.com"
+          description="Koleksi resepi daripada account @khairulaming di Instagram."
+          path="/"
+          ogPath="/og.png"
+        />
+        <List term="" resepi={resepi} />
+      </div>
+    );
+  }
+
+  const stringTerm = typeof term === "string" ? term : term[0];
+
+  const cleanTerm = String(stringTerm).replaceAll("-", " ");
 
   const capitalizeFirstChar = (str: string) =>
-    str.split("")[0].toUpperCase() + str.substring(1);
+    str.split("")[0]?.toUpperCase() + str.substring(1);
 
   const capitalizeTerm = cleanTerm
     .split(" ")

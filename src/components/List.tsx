@@ -2,11 +2,10 @@ import { useEffect, useState } from "react";
 
 import { Resepi } from "@/types";
 import { useRedirectPopunder } from "@/hooks/useRedirectPopunder";
-import { useRouter } from "next/router";
 
 function List({ resepi, term }: { term: string; resepi: Resepi[] }) {
-  const router = useRouter();
   const [filtered, setFiltered] = useState(resepi);
+  const [searchTerm, setSearchTerm] = useState(term);
   const [loading, setLoading] = useState(false);
 
   const { onOpenPopunder } = useRedirectPopunder();
@@ -15,7 +14,7 @@ function List({ resepi, term }: { term: string; resepi: Resepi[] }) {
     setLoading(true);
     const filtered = resepi.filter((item) => {
       const currentRecipe = item.title.toLowerCase();
-      return currentRecipe.includes(term);
+      return currentRecipe.includes(searchTerm);
     });
 
     const timeout = setTimeout(() => {
@@ -24,7 +23,7 @@ function List({ resepi, term }: { term: string; resepi: Resepi[] }) {
     }, 500);
 
     return () => clearTimeout(timeout);
-  }, [term]);
+  }, [searchTerm]);
 
   const affiliates = [
     {
@@ -53,11 +52,8 @@ function List({ resepi, term }: { term: string; resepi: Resepi[] }) {
           </a>
         </h1>
         <input
-          defaultValue={term}
-          onChange={(e) => {
-            const input = e.target.value.toLocaleLowerCase();
-            router.push(`/${input.replaceAll(" ", "-")}`);
-          }}
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value.toLocaleLowerCase())}
           placeholder="Cari resepi..."
           className="border-input bg-background ring-offset-background placeholder:text-muted-foreground focus-visible:ring-ring mx-auto flex h-10 w-full max-w-sm rounded-md border px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
         />

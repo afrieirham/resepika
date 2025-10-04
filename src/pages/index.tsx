@@ -1,25 +1,14 @@
+import { InferGetServerSidePropsType } from "next";
+
 import List from "@/components/List";
 import SEOHead from "@/components/SEAHead";
-import { GetStaticProps, InferGetServerSidePropsType } from "next";
+import { resepi } from "@/data";
 
-export type Resepi = {
-  title: string;
-  postUrl: string;
-  thumbnail: string;
-};
-
-export const getStaticProps: GetStaticProps<{
-  resepi: Resepi[];
-}> = async () => {
-  const resepiRes = await fetch("https://api.resepika.com/resepi");
-  const resepi: Resepi[] = await resepiRes.json();
-
+export const getStaticProps = async () => {
   return {
     props: {
       resepi,
     },
-    // revalidate every 1 minute
-    revalidate: 60 * 1,
   };
 };
 

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { Resepi } from "@/pages";
+import { Resepi } from "@/types";
 import { useRedirectPopunder } from "@/hooks/useRedirectPopunder";
 
 function List({ resepi, term }: { term: string; resepi: Resepi[] }) {

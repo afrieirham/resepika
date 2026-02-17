@@ -36,6 +36,11 @@ function List({ resepi, term }: { term: string; resepi: Resepi[] }) {
       linkUrl: "https://go.resepika.com/dendeng-nyet",
       photoUrl: "/dendeng-nyet.jpeg",
     },
+    {
+      name: "Rendang Nyet",
+      linkUrl: "https://go.resepika.com/rendang-nyet",
+      photoUrl: "/rendang-nyet.jpg",
+    },
   ];
 
   return (
@@ -70,7 +75,7 @@ function List({ resepi, term }: { term: string; resepi: Resepi[] }) {
       <p className="mt-2 px-8 text-xs sm:px-4">
         Shopee affiliate (Official Product)
       </p>
-      <div className="mt-2 grid grid-cols-1 gap-2 px-8 sm:grid-cols-2 sm:px-4">
+      <div className="mt-2 grid grid-cols-1 gap-2 px-8 sm:grid-cols-3 sm:px-4">
         {affiliates.map((ad) => (
           <div
             key={ad.linkUrl}

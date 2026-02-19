@@ -1,5 +1,6 @@
 export type Resepi = {
   title: string;
   postUrl: string;
-  thumbnail: string;
+  thumbnailUrl: string;
+  caption: string;
 };

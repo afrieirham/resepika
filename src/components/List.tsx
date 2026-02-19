@@ -119,7 +119,7 @@ function List({ resepi, term }: { term: string; resepi: Resepi[] }) {
           >
             <img
               loading="lazy"
-              src={resepi.thumbnail}
+              src={resepi.thumbnailUrl}
               alt={`${resepi.title} thumbnail`}
               className="aspect-square max-h-[200px] rounded-md object-cover"
             />
